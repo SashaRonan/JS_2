@@ -1,60 +1,59 @@
-const goods = [
-    { 
-        title: 'Mango People T-shirt', 
+const goods = [{
+        title: 'Mango People T-shirt',
         price: '$52.00',
         imgsrc: 'img/product_img_1.png'
     },
-    { 
-        title: 'Mango People T-shirt', 
+    {
+        title: 'Mango People T-shirt',
         price: '$52.00',
         imgsrc: 'img/product_img_2.png'
     },
-    { 
-        title: 'Mango People T-shirt', 
+    {
+        title: 'Mango People T-shirt',
         price: '$52.00',
         imgsrc: 'img/product_img_3.png'
     },
-    { 
-        title: 'Mango People T-shirt', 
+    {
+        title: 'Mango People T-shirt',
         price: '$52.00',
         imgsrc: 'img/product_img_4.png'
     },
-    { 
-        title: 'Mango People T-shirt', 
+    {
+        title: 'Mango People T-shirt',
         price: '$52.00',
         imgsrc: 'img/product_img_5.png'
     },
-    { 
-        title: 'Mango People T-shirt', 
+    {
+        title: 'Mango People T-shirt',
         price: '$52.00',
         imgsrc: 'img/product_img_6.png'
     },
-    { 
-        title: 'Mango People T-shirt', 
+    {
+        title: 'Mango People T-shirt',
         price: '$52.00',
         imgsrc: 'img/product_img_7.png'
     },
-    { 
-        title: 'Mango People T-shirt', 
+    {
+        title: 'Mango People T-shirt',
         price: '$52.00',
         imgsrc: 'img/product_img_8.png'
     },
-    { 
-        title: 'Mango People T-shirt', 
+    {
+        title: 'Mango People T-shirt',
         price: '$52.00',
         imgsrc: 'img/product_img_9.png'
     },
 
-    
 ];
 
-
 const $goodsList = document.querySelector('.feature__card');
-  
-const renderGoodsItem = ({ title, price, imgsrc }) => {
-    // return `<div class="goods-item"><h3>${title}</h3><p>${price}</p></div>`;
-    return `<div class="item">
 
+const renderGoodsItem = ({
+    title,
+    price,
+    imgsrc
+}) => {
+    return `<div class="item">
     <a class="feature__card__a" href="Single_page.html">
     <div class="sp__item__box">
     <img class="item__pic" src="${imgsrc}" alt="img__logo"></img>
@@ -71,15 +70,14 @@ const renderGoodsItem = ({ title, price, imgsrc }) => {
     </a>
     </div>
     </div>`;
-    
 };
-  
+
 const renderGoodsList = (list = goods) => {
     let goodsList = list.map(
-            item => renderGoodsItem(item)
-        ).join('');
+        item => renderGoodsItem(item)
+    ).join('');
 
     $goodsList.insertAdjacentHTML('beforeend', goodsList);
 }
-  
+
 renderGoodsList();
