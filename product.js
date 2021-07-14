@@ -140,9 +140,9 @@ class GoodsItem {
     }
     }
 
-    costOfGoods () {
+    // costOfGoods () {
         
-    }
+    // }
   
 
   const list = new GoodsList();
