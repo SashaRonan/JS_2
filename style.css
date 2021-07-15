@@ -147,11 +147,18 @@
   text-transform: uppercase;
 }
 
-.card {
+.cart {
   border: 0;
+  /* display: block;
+  outline-style: none;
+  list-style: none; */
 }
 
-.card__drop {
+details summary .cart::-webkit-details-marker {
+  display:none;
+}
+
+.cart__drop {
   width: 262px;
   background-color: #ffffff;
   border-radius: 5px;
@@ -161,7 +168,7 @@
   z-index: 1;
 }
 
-.card__drop__product {
+.cart__drop__product {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -174,7 +181,7 @@
           justify-content: space-between;
 }
 
-.card__drop__h {
+.cart__drop__h {
   font-family: 'Lato', sans-serif;
   font-size: 12px;
   line-height: 2.2;
@@ -184,7 +191,7 @@
   text-transform: uppercase;
 }
 
-.card__drop__p {
+.cart__drop__p {
   font-family: 'Lato', sans-serif;
   font-size: 12px;
   line-height: 2.5;
@@ -211,7 +218,7 @@
   color: #c0c0c0;
 }
 
-.card__drop__total {
+.cart__drop__total {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -221,7 +228,7 @@
   margin: 19px 0 25px;
 }
 
-.card__drop__a {
+.cart__drop__a {
   text-decoration: none;
   font-family: 'Lato', sans-serif;
   font-size: 14px;
@@ -232,7 +239,7 @@
   text-transform: uppercase;
 }
 
-.card__drop__button {
+.cart__drop__button {
   background-color: #ffffff;
   border: 1px solid #eaeaea;
   -webkit-box-align: center;
@@ -243,13 +250,13 @@
   margin-bottom: 11px;
 }
 
-.card__drop__button:hover {
+.cart__drop__button:hover {
   border: 1px solid #f16d7f;
   background-color: #f16d7f;
   color: #fff;
 }
 
-.card__drop__button:hover .card__drop__a {
+.cart__drop__button:hover .cart__drop__a {
   color: #fff;
 }
 
@@ -348,7 +355,7 @@ details[open] > summary::after {
   color: #a4a4a4;
 }
 
-.header__card {
+.header__cart {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -696,7 +703,7 @@ details[open] > summary::after {
   height: 100%;
 }
 
-.feature__card__h {
+.feature__cart__h {
   font-family: 'Lato', sans-serif;
   font-size: 13px;
   font-weight: 600;
@@ -705,7 +712,7 @@ details[open] > summary::after {
   color: #222222;
 }
 
-.feature__card__p {
+.feature__cart__p {
   font-family: 'Lato', sans-serif;
   font-size: 16px;
   font-weight: 700;
@@ -713,13 +720,13 @@ details[open] > summary::after {
   text-transform: uppercase;
 }
 
-.feature__card__a {
+.feature__cart__a {
   text-decoration: none;
   display: block;
   width: 263px;
 }
 
-.feature__card {
+.feature__cart {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1697,7 +1704,7 @@ details[open] > summary::after {
 }
 
 .sp__prodoct__desc__img {
-  background-image: url(img/card.svg);
+  background-image: url(img/cart.svg);
   margin-right: 15px;
   width: 26px;
   height: 24px;
