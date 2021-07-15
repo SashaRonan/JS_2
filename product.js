@@ -26,7 +26,7 @@ class GoodsItem {
     }
    
     renderForCart () {
-        return `    <div class="cart__drop">
+        return `    
         <div class="cart__drop__product">
             <a href="#" class="cart__drop__a">
                 <img src="${this.imgsrc}" alt="cart__logo" class="cart__drop__img">
@@ -110,13 +110,13 @@ class GoodsItem {
             title: 'Rebox Zane',
             price: '$250',
             imgsrc: 'img/cart__img__1.png',
-            quantity: '1'
+            quantity: 1
         },
         {
             title: 'Rebox Zane',
             price: '$250',
             imgsrc: 'img/cart__img__2.png',
-            quantity: '1'
+            quantity: 1
         },
     ]
     }
@@ -133,10 +133,17 @@ class GoodsItem {
     renderForCart() {
     let listHtml = '';
       this.goods.forEach(good => {
-        const goodItem = new GoodsItem(good.title, good.price, good.imgsrc);
+        const goodItem = new GoodsItem(good.title, good.price, good.imgsrc, good.quantity);
         listHtml += goodItem.renderForCart();
       });
       document.querySelector('.cart__drop').innerHTML = listHtml;
+      
+      // const renderGoodsList = (list = goods) => {
+//     let goodsList = list.map(
+//         item => renderGoodsItem(item)
+//     ).join('');
+
+//     $goodsList.insertAdjacentHTML('beforeend', goodsList);
     }
     }
 

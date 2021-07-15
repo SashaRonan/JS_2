@@ -154,6 +154,10 @@
   list-style: none; */
 }
 
+details summary .cart::-webkit-details-marker {
+  display:none;
+}
+
 .cart__drop {
   width: 262px;
   background-color: #ffffff;
