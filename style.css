@@ -149,14 +149,10 @@
 
 .cart {
   border: 0;
-  /* display: block;
-  outline-style: none;
-  list-style: none; */
+  padding-top: 10px;
+ 
 }
 
-details summary .cart::-webkit-details-marker {
-  display:none;
-}
 
 .cart__drop {
   width: 262px;
@@ -302,6 +298,13 @@ details[open] > summary::after {
   content: '\25BC';
 }
 
+details > .cart {
+  color: #fff;
+}
+details[open] > .cart::after {
+  color: #fff;
+}
+
 .browse__topmenu {
   position: relative;
 }
@@ -386,7 +389,7 @@ details[open] > summary::after {
   font-weight: 400;
   letter-spacing: 0.025em;
   color: #ffffff;
-  margin-left: 26px;
+  margin-left: 0px;
   padding: 3px 7px 3px 15px;
 }
 
@@ -2148,6 +2151,7 @@ details[open] > .summary_product_2::after {
 details[open] > .summary_product_31::after {
   color: #ef5b70;
 }
+
 
 .product__li {
   list-style-type: none;

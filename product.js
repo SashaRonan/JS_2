@@ -1,12 +1,31 @@
-class GoodsItem {
-    constructor(title, price, imgsrc, quantity) {
-      this.title = title;
-      this.price = price;
-      this.imgsrc = imgsrc;
-      this.quantity = quantity;
+function makeGETRequest(url, callback) {
+  var xhr;
+
+  if (window.XMLHttpRequest) {
+    xhr = new XMLHttpRequest();
+  } else if (window.ActiveXObject) {
+    xhr = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      callback(xhr.responseText);
     }
-    render() {
-      return `<div class="item">
+  }
+
+  xhr.open('GET', url, true);
+  xhr.send();
+}
+
+class GoodsItem {
+  constructor(title, price, imgsrc, quantity) {
+    this.title = title;
+    this.price = price;
+    this.imgsrc = imgsrc;
+    this.quantity = quantity;
+  }
+  render() {
+    return `<div class="item">
       <a class="feature__cart__a" href="Single_page.html">
       <div class="sp__item__box">
       <img class="item__pic" src="${this.imgsrc}" alt="img__logo"></img>
@@ -23,10 +42,10 @@ class GoodsItem {
       </a>
       </div>
       </div>`;
-    }
-   
-    renderForCart () {
-        return `    
+  }
+
+  renderForCart() {
+    return `    
         <div class="cart__drop__product">
             <a href="#" class="cart__drop__a">
                 <img src="${this.imgsrc}" alt="cart__logo" class="cart__drop__img">
@@ -49,198 +68,56 @@ class GoodsItem {
                 </a>
             </div>
         </div>`
-    }
   }
-  
-  class GoodsList {
-    constructor() {
-      this.goods = [];
-    }
-    fetchGoods() {
-      this.goods = [{
-        title: 'Mango People T-shirt',
-        price: '$52.00',
-        imgsrc: 'img/product_img_1.png'
-    },
-    {
-        title: 'Mango People T-shirt',
-        price: '$52.00',
-        imgsrc: 'img/product_img_2.png'
-    },
-    {
-        title: 'Mango People T-shirt',
-        price: '$52.00',
-        imgsrc: 'img/product_img_3.png'
-    },
-    {
-        title: 'Mango People T-shirt',
-        price: '$52.00',
-        imgsrc: 'img/product_img_4.png'
-    },
-    {
-        title: 'Mango People T-shirt',
-        price: '$52.00',
-        imgsrc: 'img/product_img_5.png'
-    },
-    {
-        title: 'Mango People T-shirt',
-        price: '$52.00',
-        imgsrc: 'img/product_img_6.png'
-    },
-    {
-        title: 'Mango People T-shirt',
-        price: '$52.00',
-        imgsrc: 'img/product_img_7.png'
-    },
-    {
-        title: 'Mango People T-shirt',
-        price: '$52.00',
-        imgsrc: 'img/product_img_8.png'
-    },
-    {
-        title: 'Mango People T-shirt',
-        price: '$52.00',
-        imgsrc: 'img/product_img_9.png'
-    },
-      ];
-    }
+}
 
-    fetchGoodsForCart () {
-        this.goods = [{
-            title: 'Rebox Zane',
-            price: '$250',
-            imgsrc: 'img/cart__img__1.png',
-            quantity: 1
-        },
-        {
-            title: 'Rebox Zane',
-            price: '$250',
-            imgsrc: 'img/cart__img__2.png',
-            quantity: 1
-        },
-    ]
-    }
+const API_URL = 'https://raw.githubusercontent.com/SashaRonan/Data/For-Homework3';
 
-    render() {
-      let listHtml = '';
-      this.goods.forEach(good => {
-        const goodItem = new GoodsItem(good.title, good.price, good.imgsrc);
-        listHtml += goodItem.render();
-      });
-      document.querySelector('.feature__cart').innerHTML = listHtml;
-    }
+class GoodsList {
+  constructor() {
+    this.goods = [];
+  }
+  fetchGoods(cb) {
+    makeGETRequest(`${API_URL}/product.json`, (goods) => {
+      this.goods = JSON.parse(goods);
+      cb();
+    })
+  }
 
-    renderForCart() {
-    let listHtml = '';
-      this.goods.forEach(good => {
-        const goodItem = new GoodsItem(good.title, good.price, good.imgsrc, good.quantity);
-        listHtml += goodItem.renderForCart();
-      });
-      document.querySelector('.cart__drop').innerHTML = listHtml;
-      
-      // const renderGoodsList = (list = goods) => {
-//     let goodsList = list.map(
-//         item => renderGoodsItem(item)
-//     ).join('');
+  fetchGoodsForCart(cb) {
+    makeGETRequest(`${API_URL}/cart.json`, (goods) => {
+      this.goods = JSON.parse(goods);
+      cb();
+    })
+  }
 
-//     $goodsList.insertAdjacentHTML('beforeend', goodsList);
-    }
-    }
+render() {
+  let listHtml = '';
+  this.goods.forEach(good => {
+    const goodItem = new GoodsItem(good.title, good.price, good.imgsrc);
+    listHtml += goodItem.render();
+  });
+  document.querySelector('.feature__cart').innerHTML = listHtml;
+}
 
-    // costOfGoods () {
-        
-    // }
-  
+renderForCart() {
+  let listHtml = '';
+  this.goods.forEach(good => {
+    const goodItem = new GoodsItem(good.title, good.price, good.imgsrc, good.quantity);
+    listHtml += goodItem.renderForCart();
+  });
+  document.querySelector('.cart__drop').innerHTML = listHtml;
+}
+}
 
-  const list = new GoodsList();
-list.fetchGoods();
-list.render();
-
+const list = new GoodsList();
+list.fetchGoods(() => {
+  list.render();
+});
+console.log(list);
 
 const listCart = new GoodsList();
-listCart.fetchGoodsForCart();
-listCart.renderForCart();
-
-// const goods = [{
-//         title: 'Mango People T-shirt',
-//         price: '$52.00',
-//         imgsrc: 'img/product_img_1.png'
-//     },
-//     {
-//         title: 'Mango People T-shirt',
-//         price: '$52.00',
-//         imgsrc: 'img/product_img_2.png'
-//     },
-//     {
-//         title: 'Mango People T-shirt',
-//         price: '$52.00',
-//         imgsrc: 'img/product_img_3.png'
-//     },
-//     {
-//         title: 'Mango People T-shirt',
-//         price: '$52.00',
-//         imgsrc: 'img/product_img_4.png'
-//     },
-//     {
-//         title: 'Mango People T-shirt',
-//         price: '$52.00',
-//         imgsrc: 'img/product_img_5.png'
-//     },
-//     {
-//         title: 'Mango People T-shirt',
-//         price: '$52.00',
-//         imgsrc: 'img/product_img_6.png'
-//     },
-//     {
-//         title: 'Mango People T-shirt',
-//         price: '$52.00',
-//         imgsrc: 'img/product_img_7.png'
-//     },
-//     {
-//         title: 'Mango People T-shirt',
-//         price: '$52.00',
-//         imgsrc: 'img/product_img_8.png'
-//     },
-//     {
-//         title: 'Mango People T-shirt',
-//         price: '$52.00',
-//         imgsrc: 'img/product_img_9.png'
-//     },
-
-// ];
-
-// const $goodsList = document.querySelector('.feature__cart');
-
-// const renderGoodsItem = ({
-//     title,
-//     price,
-//     imgsrc
-// }) => {
-//     return `<div class="item">
-//     <a class="feature__cart__a" href="Single_page.html">
-//     <div class="sp__item__box">
-//     <img class="item__pic" src="${imgsrc}" alt="img__logo"></img>
-//     </div>
-//     <div class="feature__txt__box">
-//     <h4 class="feature__cart__h">${title}</h4>
-//     <p class="feature__cart__p">${price}</p>
-//     </div>
-//     </a>
-//     <div class="in__box">
-//     <a href="Shopping Cart.html" class="in">
-//     <img src="img/cart_add.svg" alt="cart_logo">
-//     <p class="in__txt">Add to Cart</p>
-//     </a>
-//     </div>
-//     </div>`;
-// };
-
-// const renderGoodsList = (list = goods) => {
-//     let goodsList = list.map(
-//         item => renderGoodsItem(item)
-//     ).join('');
-
-//     $goodsList.insertAdjacentHTML('beforeend', goodsList);
-// }
-
-// renderGoodsList();
+list.fetchGoodsForCart(() => {
+  list.renderForCart();
+});
+console.log(listCart);
