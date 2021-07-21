@@ -349,6 +349,13 @@ details[open] > .cart::after {
   outline: none;
 }
 
+.header_button:hover {
+  border-top: 2px solid #202020;
+  border-right: 2px solid #202020;
+  border-bottom: 2px solid #202020;
+  border-left: 2px solid #202020;
+}
+
 .fa-search {
   font-family: 'Font Awesome';
   font-size: 14px;

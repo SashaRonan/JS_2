@@ -24,6 +24,8 @@ class GoodsItem {
     this.imgsrc = imgsrc;
     this.quantity = quantity;
   }
+
+  // метод для сборки карточки товара
   render() {
     return `<div class="item">
       <a class="feature__cart__a" href="Single_page.html">
@@ -44,6 +46,7 @@ class GoodsItem {
       </div>`;
   }
 
+  // Метод для сборки карточки товара в  корзину 
   renderForCart() {
     return `    
         <div class="cart__drop__product">
@@ -76,13 +79,18 @@ const API_URL = 'https://raw.githubusercontent.com/SashaRonan/Data/For-Homework3
 class GoodsList {
   constructor() {
     this.goods = [];
+    this.filteredGoods = [];
   }
+
+
   fetchGoods(cb) {
     makeGETRequest(`${API_URL}/product.json`, (goods) => {
       this.goods = JSON.parse(goods);
+      this.filteredGoods = JSON.parse(goods);
       cb();
     })
   }
+
 
   fetchGoodsForCart(cb) {
     makeGETRequest(`${API_URL}/cart.json`, (goods) => {
@@ -91,33 +99,52 @@ class GoodsList {
     })
   }
 
-render() {
-  let listHtml = '';
-  this.goods.forEach(good => {
-    const goodItem = new GoodsItem(good.title, good.price, good.imgsrc);
-    listHtml += goodItem.render();
-  });
-  document.querySelector('.feature__cart').innerHTML = listHtml;
-}
+  // Метод для сборки списка товаров
+  render() {
+    let listHtml = '';
+    this.filteredGoods.forEach((good) => {
+      const goodItem = new GoodsItem(good.title, good.price, good.imgsrc);
+      listHtml += goodItem.render();
+    });
+    document.querySelector('.feature__cart').innerHTML = listHtml;
+  }
 
-renderForCart() {
-  let listHtml = '';
-  this.goods.forEach(good => {
-    const goodItem = new GoodsItem(good.title, good.price, good.imgsrc, good.quantity);
-    listHtml += goodItem.renderForCart();
-  });
-  document.querySelector('.cart__drop').innerHTML = listHtml;
-}
+  renderForCart() {
+    let listHtml = '';
+    this.goods.forEach((good) => {
+      const goodItem = new GoodsItem(good.title, good.price, good.imgsrc, good.quantity);
+      listHtml += goodItem.renderForCart();
+    });
+    document.querySelector('.cart__drop').innerHTML = listHtml;
+  }
+
+  // Метод для сборки списка товаров в корзину
+  filterGoods(queryString) {
+    console.log(queryString);
+    const regexp = new RegExp(queryString, 'i');
+    this.filteredGoods = this.goods.filter((good) => regexp.test(good.title));
+    this.render();
+  }
 }
 
 const list = new GoodsList();
 list.fetchGoods(() => {
   list.render();
 });
-console.log(list);
+
 
 const listCart = new GoodsList();
 list.fetchGoodsForCart(() => {
   list.renderForCart();
 });
-console.log(listCart);
+
+
+const searchInput = document.querySelector(".header__search");
+const searchButton = document.querySelector(".header_button");
+
+
+searchButton.addEventListener('click', () => {
+  const value = searchInput.value;
+  list.filterGoods(value);
+  console.log(value);
+});

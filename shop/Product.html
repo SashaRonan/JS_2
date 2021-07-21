@@ -16,7 +16,7 @@
 </head>
 
 <body>
-
+   
 <!-- Шапка -->
     <header class="header container">
 
@@ -31,7 +31,7 @@
             </a>
 
             <!-- Левая часть шапки -->
-            <form action="#" class="file-upload">
+            <div class="file-upload">
 
                 <details>
                     <summary class="browse_summary"><span class="browse_text">Browse </span></summary>
@@ -94,146 +94,34 @@
                 </details>
 
                 <!-- Строка поиска -->
-                <div>
+            
                     <input class="header__search" name="s" placeholder="Search for Item.." type="search">
-                </div>
+                
 
                 <!-- Кнопка поиска -->
-                <div>
-                    <button class="header_button" type="submit">
+            
+                    <button class="header_button"  type="button">
                         <span class="fas fa-search"></span>
                     </button>
-                </div>
-            </form>
+                
+            </div>
         </div>
 
-        <!-- Правая часть шапки -->
+        <!-- Правая часть шапки (реализовано с помощью product.js)-->
         <div class="header__cart">
 
             <details>
             <summary class="cart">
                 <img src="img/cart.svg" alt="logo">
             </summary>
-            <div class="cart__drop">
-                <!-- <div class="cart__drop__product">
-                    <a href="#" class="cart__drop__a">
-                        <img src="img/cart__img__1.png" alt="cart__logo" class="cart__drop__img">
-                    </a>
-                    <div class="cart__drop__prouduct__info">
-                        <a class="dec__none" href="Shopping Cart.html">
-                            <p class="cart__drop__h">Rebox Zane</p>
-                            <p> <span class="fas fa-star"></span>
-                                <span class="fas fa-star"></span>
-                                <span class="fas fa-star"></span>
-                                <span class="fas fa-star"></span>
-                                <span class="far fa-star"></span>
-                            </p>
-                            <p class="cart__drop__p">1 x $250</p>
-                        </a>
-                    </div>
-                    <div>
-                        <a class="dec__none" href="Product.html">
-                            <p class="fas fa-times-circle"></p>
-                        </a>
-                    </div>
-                </div>
-                <hr>
-
-                <div class="cart__drop__product">
-                    <a href="Shopping Cart.html" class="cart__drop__a"><img src="img/cart__img__2.png" alt=""
-                            class="cart__drop__img"></a>
-                    <div class="cart__drop__prouduct__info">
-                        <a class="dec__none" href="Shopping Cart.html">
-                            <p class="cart__drop__h">Rebox Zane</p>
-                            <p> <span class="fas fa-star"></span>
-                                <span class="fas fa-star"></span>
-                                <span class="fas fa-star"></span>
-                                <span class="fas fa-star"></span>
-                                <span class="far fa-star"></span>
-                            </p>
-                            <p class="cart__drop__p">1 x $250</p>
-                        </a>
-                    </div>
-                    <div>
-                        <a class="dec__none" href="Product.html">
-                            <p class="fas fa-times-circle"></p>
-                        </a>
-                    </div>
-                </div>
-                <hr> -->
-
-                <!-- <div class="cart__drop__total">
-                    <p class="cart__drop__h">Total</p>
-                    <p class="cart__drop__h">5000$</p>
-                </div>
-                <div class="cart__drop__button"><a href="Product.html" class="cart__drop__a">CHECKOUT</a></div>
-                <div class="cart__drop__button"><a href="Shopping Cart.html" class="cart__drop__a">GO TO CART</a></div> -->
-
+            <div class="cart__drop">           
             </div>
             </details>
 
             <details>
-                <summary class="account__text">My Account</summary>
-
-                <!-- <div class="cart__drop">
-                    <div class="cart__drop__product">
-                        <a href="#" class="cart__drop__a">
-                            <img src="img/cart__img__1.png" alt="cart__logo" class="cart__drop__img">
-                        </a>
-                        <div class="cart__drop__prouduct__info">
-                            <a class="dec__none" href="Shopping Cart.html">
-                                <p class="cart__drop__h">Rebox Zane</p>
-                                <p> <span class="fas fa-star"></span>
-                                    <span class="fas fa-star"></span>
-                                    <span class="fas fa-star"></span>
-                                    <span class="fas fa-star"></span>
-                                    <span class="far fa-star"></span>
-                                </p>
-                                <p class="cart__drop__p">1 x $250</p>
-                            </a>
-                        </div>
-                        <div>
-                            <a class="dec__none" href="Product.html">
-                                <p class="fas fa-times-circle"></p>
-                            </a>
-                        </div>
-                    </div>
-                    <hr>
-
-                    <div class="cart__drop__product">
-                        <a href="Shopping Cart.html" class="cart__drop__a"><img src="img/cart__img__2.png" alt=""
-                                class="cart__drop__img"></a>
-                        <div class="cart__drop__prouduct__info">
-                            <a class="dec__none" href="Shopping Cart.html">
-                                <p class="cart__drop__h">Rebox Zane</p>
-                                <p> <span class="fas fa-star"></span>
-                                    <span class="fas fa-star"></span>
-                                    <span class="fas fa-star"></span>
-                                    <span class="fas fa-star"></span>
-                                    <span class="far fa-star"></span>
-                                </p>
-                                <p class="cart__drop__p">1 x $250</p>
-                            </a>
-                        </div>
-                        <div>
-                            <a class="dec__none" href="Product.html">
-                                <p class="fas fa-times-circle"></p>
-                            </a>
-                        </div>
-                    </div>
-                    <hr>
-
-                    <div class="cart__drop__total">
-                        <p class="cart__drop__h">Total</p>
-                        <p class="cart__drop__h">5000$</p>
-                    </div>
-                    <div class="cart__drop__button"><a href="Product.html" class="cart__drop__a">CHECKOUT</a></div>
-                    <div class="cart__drop__button"><a href="Shopping Cart.html" class="cart__drop__a">GO TO CART</a></div>
-
-                </div>-->
+                <summary class="account__text">My Account</summary>              
             </details>
-        </div> 
-        
+        </div>       
 
     </header>
 
