@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app">
+
+        <header class="header container">
+
+            <div class="header__left">
+
+                <!-- Логотип -->
+                <a class="logo__a" href="index.html">
+                    <div class="header__brand">
+                        <img src="img/logo.svg" alt="logo">
+                        <p class="logo__text">Bran<span class="letter">d</span></p>
+                    </div>
+                </a>
+
+                
+                <div class="file-upload">
+
+                    <!-- Строка поиска -->
+                    <input class="header__search" placeholder="Search for Item.." type="text" v-model="searchLine">
+                    <button class="close__button" v-on:click="clearSearch">
+                        <img src="https://openclipart.org/download/171382/1343828574.svg" alt="close" class=close__img>
+                    </button>
+                    </input>
+
+                    <!-- Кнопка поиска -->
+                    <button class="header_button" v-on:click="filterGoods">SEARCH</button>
+                </div>
+            </div>
+
+            <!-- Корзина-->
+            <details>
+                <summary class="cart">
+                    <img src="img/cart.png" alt="logo">
+                </summary>
+                <template class="cart__drop" v-if="isVisibleCart">
+                    <template v-if="goods.length > 0" class="cart__drop__product">
+                        <div class="cart__drop__prouduct__info" v-for="good of cart">
+                            <a class="dec__none" href="#">
+                                <p class="cart__drop__h">
+                                    <span>{{ good.title }}</span> 
+                                    <span class="cart__drop__p">${{ good.price }}</span>
+                                    <button class="close__button__cart">
+                                        <img src="https://openclipart.org/download/171382/1343828574.svg" alt="close" class=close__img__cart>
+                                    </button>
+                                </p>
+                            </a>
+
+                        </div>
+                        <div>
+                            <a class="dec__none" href="Product.html">
+                                <p class="fas fa-times-circle"></p>
+                            </a>
+                        </div>
+                    </template>
+                </template>
+                <template v-else>
+                </template>
+            </details>
+
+        </header>
+        <!-- Список товаров -->
+        <template v-if="isLoaded">
+            <template v-if="goods.length > 0">
+                <div class="feature__cart container">
+                    <div class="item" v-for="good of filteredGoods">
+                        <a class="feature__cart__a" href="#">
+                            <div class="sp__item__box">
+                                <img class="item__pic" :src="`${good.imgsrc}`" alt="img__logo">
+                            </div>
+                            <div class="feature__txt__box">
+                                <h4 class="feature__cart__h">{{ good.title }}</h4>
+                                <p class="feature__cart__p">$ {{ good.price }}</p>
+                            </div>
+                        </a>
+                        <div class="in__box">
+                            <a href="#" class="in">
+                                <img src="img/cart_add.svg" alt="cart_logo">
+                                <button class="in__txt" v-on:click="add">Add to Cart</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </template>
+            <template v-else>
+                <p class="temp container">Нет данных</p>
+            </template>
+        </template>
+        <template v-else>
+            <p class="temp container">Loading...</p>
+        </template>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
