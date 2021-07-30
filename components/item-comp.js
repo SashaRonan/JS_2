@@ -5,7 +5,7 @@ const itemTemp = `  <div class="item">
     </div>
     <div class="feature__txt__box">
         <h4 class="feature__card__h">{{good.title}}</h4>
-        <p class="feature__card__p">{{good.price}}</p>
+        <p class="feature__card__p">$ {{good.price}}</p>
     </div>
 </a>
 <div class="in__box">

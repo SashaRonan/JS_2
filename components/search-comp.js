@@ -60,20 +60,38 @@ const searchTemp = ` <form action="#" class="file-upload">
     </div>
 </details>
 
-<!-- Строка поиска -->
+<!-- СТРОКА ПОИСКА -->
 
-<input class="header__search" placeholder="Search for Item.." type="text" >
-                    <button class="close__button" >
+<input v-model="searchLine" class="header__search" placeholder="Search for Item.." type="text" >
+
+<!-- КНОПКА ОЧИСТКИ ПОИСКА -->
+                    <button v-on:click="clearSearch" class="close__button" >
                         <img src="https://openclipart.org/download/171382/1343828574.svg" alt="close" class="close__img">
                     </button>
-                    </input>
+                    
 
-                    <!-- Кнопка поиска -->
-                    <button class="header_button" >SEARCH</button>
+                    <!-- КНОПКА ПОИСКА -->
+                    <button @click= "filterGoods" class="header_button" >SEARCH</button>
 
 </form>`
 
 Vue.component(`search-comp`, {
     template: searchTemp,
-    
+    data() {
+        return {
+            searchLine: '',
+        }
+    },
+    methods: {
+        filterGoods() {
+            const regexp = new RegExp(this.searchLine, 'i');
+            this.$emit('filter', regexp)
+        },
+
+        clearSearch() {
+            this.searchLine = ''
+            this.filterGoods()
+          }
+    }
+
 })
