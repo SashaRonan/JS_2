@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BRAND | Product</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/164f78a27b.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="img/logo.ico" type="image/x-icon">
+
+
+</head>
+
+<body>
+
+    <div id="app">
+        <header-comp v-bind:cart="cart"></header-comp>
+        <menu-comp></menu-comp>
+        <product-comp v-bind:goods="goods_list" v-on:add="addHandler"></product-comp>
+        <banner-comp></banner-comp>
+        <subscribe-comp></subscribe-comp>
+        <footer-comp></footer-comp>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="components/header-comp.js"></script>
+    <script src="components/search-comp.js"></script>
+    <script src="components/menu-comp.js"></script>
+    <script src="components/product-comp.js"></script>
+    <script src="components/item-comp.js"></script>
+    <script src="components/banner-comp.js"></script>
+    <script src="components/subscribe-comp.js"></script>
+    <script src="components/footer-comp.js"></script>
+    <script src="main.js"></script>
+
+
+</body>
+
+</html>
