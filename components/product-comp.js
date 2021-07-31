@@ -197,7 +197,7 @@ const productTemp = `<section class="checkout__main">
         <!--Рекомендованные товары карточки-->
         <section>
 
-            <div class="feature__card container">
+            <div class="feature__cart container">
 
                 <!-- Карточка -->
                 
@@ -239,10 +239,10 @@ Vue.component(`product-comp`, {
     template: productTemp,
     props: ['goods'],
     methods: {
-        addHandler(id){
+        addHandler(id) {
             this.$emit('add', id)
         }
     }
 
-    
+
 })

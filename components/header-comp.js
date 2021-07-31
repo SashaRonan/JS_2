@@ -1,4 +1,6 @@
-const headerTemp = `<header class="header container">
+const headerTemp = `
+
+<header class="header container">
 
 <div class="header__left">
 
@@ -17,7 +19,8 @@ const headerTemp = `<header class="header container">
 </div>
 
 <!-- КОРЗИНА -->
-<cart-comp v-bind:cart="cart"></cart-comp>
+<cart-comp v-bind:cart="cart" ></cart-comp>
+
 
 
 </header>`

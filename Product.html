@@ -18,7 +18,7 @@
 <body>
 
     <div id="app">
-        <header-comp @filter_goods="filterGoods" v-bind:cart="cart.length"></header-comp>
+        <header-comp @filter_goods="filterGoods" v-bind:cart="cart"></header-comp>
         <menu-comp></menu-comp>
         <template v-if="filteredGoods.length > 0">
             <product-comp v-bind:goods="filteredGoods" v-on:add="addHandler"></product-comp>
@@ -49,6 +49,7 @@
     <script src="components/subscribe-comp.js"></script>
     <script src="components/footer-comp.js"></script>
     <script src="components/cart-comp.js"></script>
+    <script src="components/itemcart-comp.js"></script>
     <script src="main.js"></script>
 
 

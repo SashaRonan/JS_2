@@ -11,6 +11,7 @@ const vue = new Vue({
     },
     methods: {
         addHandler(id) {
+            this.$emit('add', id)
             const good = this.goods_list.find(good => good.id === id);
             this.cart.push(good);
             console.log(this.cart)

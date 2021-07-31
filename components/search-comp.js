@@ -91,7 +91,7 @@ Vue.component(`search-comp`, {
         clearSearch() {
             this.searchLine = ''
             this.filterGoods()
-          }
+        }
     }
 
 })
